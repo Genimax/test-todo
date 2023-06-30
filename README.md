@@ -1,7 +1,4 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Реализовать интерфейс списка пользователей, их задач (TODO-лист) и платежей в виде Single Page Application на Vue.js
+Сделать два полноценных раздела (Пользователи и Платежи), TODO-лист выдавать в модальном окне в разделе пользователей, наряду с модальным окном редактирования данных пользователя (email, имя, номер телефона).
+В TODO-лист добавить возможность отметки выполненных задач.
+В разделе платежей сделать лишь просмотр деталей платежа в окне.
