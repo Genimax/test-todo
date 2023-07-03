@@ -1,17 +1,23 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../components/HelloWorld.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import Users from "../components/Users.vue";
+import Payments from "../components/Payments.vue";
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    }
+  {
+    path: "/users",
+    name: "Users",
+    component: Users
+  },
+  {
+    path: "/payments",
+    name: "Payments",
+    component: Payments
+  }
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes
 });
 
 export default router;

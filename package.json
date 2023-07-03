@@ -10,22 +10,22 @@
     "lint": "./node_modules/.bin/eslint"
   },
   "dependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
     "pinia": "^2.1.4",
+    "vite": "^4.3.9",
     "vue": "^3.2.47",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-vue": "^9.15.1",
     "prettier": "^2.8.8",
-    "vite": "^4.3.9"
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2"
   }
 }
