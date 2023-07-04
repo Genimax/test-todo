@@ -6,6 +6,7 @@
   >
     <component
       :is="ModalStore.getModalSettings.modalProps.type"
+      :data="testProps"
       class="modal-content"
       @click.stop
     ></component>
@@ -26,8 +27,16 @@ export default {
   },
   setup() {
     const ModalStore = useModalStore();
+
+    const testProps = {
+      fullName: "Судья Дредд",
+      email: "sudyadredd@gmail.com",
+      number: "02-02020202"
+    };
+
     return {
-      ModalStore
+      ModalStore,
+      testProps
     };
   }
 };
