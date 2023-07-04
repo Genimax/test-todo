@@ -1,53 +1,34 @@
 <template>
-  <div v-if="show" class="modal-window" @click.stop="hideModal">
-    <div class="modal-content" @click.stop>
-      {{ modalRender(settings.type) }}
-    </div>
+  <div
+    v-if="ModalStore.getModalSettings.show"
+    class="modal-window"
+    @click.stop="() => ModalStore.setVisible(false)"
+  >
+    <component
+      :is="ModalStore.getModalSettings.modalProps.type"
+      class="modal-content"
+      @click.stop
+    ></component>
   </div>
 </template>
 
 <script>
-import ModalTypes from "../../utils/ModalTypes.js";
+import useModalStore from "../../store/modules/ModalStore";
+import ModalUserSettings from "./Modals/ModalUserSettings.vue";
+import ModalTodoList from "./Modals/ModalTodoList.vue";
+import ModalPaymentDetails from "./Modals/ModalPaymentDetails.vue";
 
 export default {
-  name: "ModalWindow",
-
-  props: {
-    show: {
-      required: true,
-      type: Boolean,
-      default: false
-    },
-
-    settings: {
-      type: Object,
-      required: true,
-      default: () => ({
-        type: "",
-        data: {}
-      })
-    }
+  components: {
+    ModalTodoList,
+    ModalUserSettings,
+    ModalPaymentDetails
   },
-  emits: ["update:show"],
-  methods: {
-    hideModal() {
-      this.$emit("update:show", false);
-    },
-    modalRender(type) {
-      if (type === ModalTypes.UserSettings) {
-        return "settings";
-      }
-
-      if (type === ModalTypes.ToDoList) {
-        return "todolist";
-      }
-
-      if (type === ModalTypes.PaymentDetails) {
-        return "PaymentDetails";
-      }
-
-      return "";
-    }
+  setup() {
+    const ModalStore = useModalStore();
+    return {
+      ModalStore
+    };
   }
 };
 </script>

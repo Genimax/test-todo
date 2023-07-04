@@ -1,25 +1,12 @@
 <script>
-import ModalWindow from "./UI/Modal.vue";
-import ModalTypes from "../utils/ModalTypes.js";
+import Modal from "./UI/Modal.vue";
 
 export default {
-  components: { ModalWindow },
-  data() {
-    return {
-      modal: ModalWindow,
-      modalShow: true,
-      modalSettings: {
-        type: ModalTypes.UserSettings, // ПОЗЖЕ ЗАМЕНИТЬ НА ЗАВИСИМОСТЬ ОТ КНОПКИ
-        data: {}
-      }
-    };
-  }
+  components: { Modal }
 };
 </script>
 
 <template>
-  <keep-alive>
-    <component :is="modal" v-model:show="modalShow" :settings="modalSettings" />
-  </keep-alive>
+  <Modal></Modal>
   <h1>USERS</h1>
 </template>

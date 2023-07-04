@@ -1,0 +1,25 @@
+@import "./variables";
+
+@mixin input-main {
+  text-align: center;
+  padding: 0 20px;
+  border-radius: 6px;
+  min-width: 200px;
+  height: 32px;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: $light-grey;
+  border: none;
+}
+
+@mixin button-main {
+  min-width: 200px;
+  min-height: 46px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  background-color: $light-grey;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}

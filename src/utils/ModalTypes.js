@@ -1,5 +1,5 @@
 export default {
-  UserSettings: "userSettings",
-  ToDoList: "todoList",
-  PaymentDetails: "paymentDetails"
+  UserSettings: "ModalUserSettings",
+  ToDoList: "ModalTodoList",
+  PaymentDetails: "ModalPaymentDetails"
 };
