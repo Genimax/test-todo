@@ -12,6 +12,18 @@
       class="modal-content"
       @click.stop
     ></ModalUserSettings>
+    <ModalTodoList
+      v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
+      :data="ModalStore.getModalSettings.modalProps.data"
+      class="modal-content"
+      @click.stop
+    ></ModalTodoList>
+    <ModalPaymentDetails
+      v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
+      :data="ModalStore.getModalSettings.modalProps.data"
+      class="modal-content"
+      @click.stop
+    ></ModalPaymentDetails>
   </div>
 </template>
 
