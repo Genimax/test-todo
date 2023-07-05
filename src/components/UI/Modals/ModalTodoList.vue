@@ -17,7 +17,7 @@
       </div>
       <div class="buttons-container">
         <button class="btn-ok">Подтвердить</button>
-        <button @click="() => ModalStore.setVisible(false)">Отмена</button>
+        <button @click="ModalStore.setVisible(false)">Отмена</button>
       </div>
     </div>
   </div>

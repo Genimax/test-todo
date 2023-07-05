@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Users from "../components/Users.vue";
-import Payments from "../components/Payments.vue";
+import Users from "../components/pages/Users.vue";
+import Payments from "../components/pages/Payments.vue";
 
 const routes = [
   {

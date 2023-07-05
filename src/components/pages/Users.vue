@@ -1,6 +1,39 @@
-@import "../variables";
+<script setup>
+import useUserStore from "../../store/modules/UserStore";
+import useModalStore from "../../store/modules/ModalStore";
+import ModalTypes from "../../utils/ModalTypes";
 
-#users_container {
+import todoIcon from "../../../public/todo-list-icon.svg";
+import userIcon from "../../../public/user-settings.svg";
+
+const userStore = useUserStore();
+const modalStore = useModalStore();
+
+const userListener = (id) => {
+  const data = userStore.getUsers.find((item) => item.id === id);
+  modalStore.setModalProps(ModalTypes.UserSettings, data);
+  modalStore.setVisible(true);
+};
+</script>
+
+<template>
+  <div class="users-container">
+    <div class="users-list">
+      <div v-for="user in userStore.getUsers" :key="user.id">
+        <p>{{ user.fullName }}</p>
+        <div>
+          <img :src="todoIcon" alt="todo icon" />
+          <img :src="userIcon" alt="user icon" @click="userListener(user.id)" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@import "/src/styles/variables";
+
+.users-container {
   display: flex;
   flex-direction: column;
   padding: 50px 25px;
@@ -9,7 +42,7 @@
   align-self: center;
   background-color: $grey;
 
-  #users_list {
+  .users-list {
     padding: 0 35px;
     height: 75vh;
     overflow-y: auto;
@@ -39,8 +72,6 @@
         justify-content: flex-end;
         gap: 16px;
 
-
-
         img {
           width: 21px;
           height: 21px;
@@ -62,19 +93,19 @@
   }
 }
 
-#users_list::-webkit-scrollbar {
+.users-list::-webkit-scrollbar {
   width: 8px;
   border-radius: 10px;
   background-color: $dark-grey;
-
 }
 
-#users_list::-webkit-scrollbar-track {
+.users-list::-webkit-scrollbar-track {
   border-radius: 10px;
   background: $dark-grey;
 }
 
-#users_list::-webkit-scrollbar-thumb {
+.users-list::-webkit-scrollbar-thumb {
   background: $light-grey;
   border-radius: 10px;
 }
+</style>

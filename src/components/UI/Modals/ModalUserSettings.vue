@@ -5,65 +5,46 @@
 
       <div>
         <p>Email:</p>
-        <input v-model="data.email" />
+        <input v-model="modalData.email" />
       </div>
       <div>
         <p>Имя:</p>
-        <input v-model="data.fullName" />
+        <input v-model="modalData.fullName" />
       </div>
       <div>
         <p>Номер:</p>
-        <input v-model="data.number" />
+        <input v-model="modalData.number" />
       </div>
       <div class="buttons-container">
-        <button class="btn-ok" @click="() => onAccept(data.id, data)">
+        <button class="btn-ok" @click="onAccept(props.data)">
           Подтвердить
         </button>
-        <button @click="() => ModalStore.setVisible(false)">Отмена</button>
+        <button @click="ModalStore.setVisible(false)">Отмена</button>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
+import { reactive } from "vue";
 import useModalStore from "../../../store/modules/ModalStore";
 import useUserStore from "../../../store/modules/UserStore";
 
-export default {
-  props: {
-    data: {
-      type: Object,
-      required: true
-    }
-  },
+const props = defineProps({
+  data: Object
+});
 
-  setup() {
-    const ModalStore = useModalStore();
-    const UserStore = useUserStore();
+const modalData = reactive({
+  fullName: props.data.fullName,
+  number: props.data.number,
+  email: props.data.email
+});
 
-    const onAccept = (data) => {
-      UserStore.changeUserById(data.id, data);
-      ModalStore.setVisible(false);
-    };
+const ModalStore = useModalStore();
+const UserStore = useUserStore();
 
-    return {
-      ModalStore,
-      onAccept
-    };
-  },
-  data() {
-    return {
-      id: "",
-      fullName: "",
-      email: "",
-      number: ""
-    };
-  },
-  created() {
-    this.id = this.data.id;
-    this.fullName = this.data.fullName;
-    this.email = this.data.email;
-    this.number = this.data.number;
-  }
+const onAccept = (data) => {
+  UserStore.changeUserById(data.id, modalData);
+  ModalStore.setVisible(false);
 };
 </script>

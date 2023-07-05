@@ -16,6 +16,8 @@ const useUserStore = defineStore("userStore", {
     changeUserById(id, data) {
       const user = this.users.find((item) => item.id === id);
 
+      console.log(data);
+
       user.fullName = data.fullName;
       user.email = data.email;
       user.number = data.number;
