@@ -1,8 +1,15 @@
 <script>
-export default {};
+import Modal from "./UI/Modal.vue";
+
+export default {
+  components: {
+    Modal
+  }
+};
 </script>
 
 <template>
+  <Modal></Modal>
   <header>
     <div>
       <router-link to="/users" class="nav-button">Пользователи</router-link>

@@ -3,9 +3,10 @@ import ModalTypes from "../../utils/ModalTypes";
 
 const useModalStore = defineStore("modalStore", {
   state: () => ({
-    show: true,
+    show: false,
     modalProps: {
-      type: ModalTypes.UserSettings
+      type: ModalTypes.UserSettings,
+      data: {}
     }
   }),
 
@@ -16,8 +17,9 @@ const useModalStore = defineStore("modalStore", {
   },
 
   actions: {
-    setModalProps(props) {
-      this.modalProps = props;
+    setModalProps(type, data) {
+      this.modalProps.type = type;
+      this.modalProps.data = data;
     },
 
     setVisible(option) {

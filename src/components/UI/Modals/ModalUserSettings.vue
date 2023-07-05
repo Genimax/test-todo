@@ -16,7 +16,9 @@
         <input v-model="data.number" />
       </div>
       <div class="buttons-container">
-        <button class="btn-ok">Подтвердить</button>
+        <button class="btn-ok" @click="() => onAccept(data.id, data)">
+          Подтвердить
+        </button>
         <button @click="() => ModalStore.setVisible(false)">Отмена</button>
       </div>
     </div>
@@ -25,6 +27,7 @@
 
 <script>
 import useModalStore from "../../../store/modules/ModalStore";
+import useUserStore from "../../../store/modules/UserStore";
 
 export default {
   props: {
@@ -33,21 +36,31 @@ export default {
       required: true
     }
   },
+
   setup() {
     const ModalStore = useModalStore();
+    const UserStore = useUserStore();
+
+    const onAccept = (data) => {
+      UserStore.changeUserById(data.id, data);
+      ModalStore.setVisible(false);
+    };
 
     return {
-      ModalStore
+      ModalStore,
+      onAccept
     };
   },
   data() {
     return {
+      id: "",
       fullName: "",
       email: "",
       number: ""
     };
   },
   created() {
+    this.id = this.data.id;
     this.fullName = this.data.fullName;
     this.email = this.data.email;
     this.number = this.data.number;
