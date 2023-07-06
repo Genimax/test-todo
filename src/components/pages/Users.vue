@@ -9,9 +9,9 @@ import userIcon from "../../../public/user-settings.svg";
 const userStore = useUserStore();
 const modalStore = useModalStore();
 
-const userListener = (id) => {
+const userListener = (id, modalType) => {
   const data = userStore.getUsers.find((item) => item.id === id);
-  modalStore.setModalProps(ModalTypes.UserSettings, data);
+  modalStore.setModalProps(modalType, data);
   modalStore.setVisible(true);
 };
 </script>
@@ -22,8 +22,16 @@ const userListener = (id) => {
       <div v-for="user in userStore.getUsers" :key="user.id">
         <p>{{ user.fullName }}</p>
         <div>
-          <img :src="todoIcon" alt="todo icon" />
-          <img :src="userIcon" alt="user icon" @click="userListener(user.id)" />
+          <img
+            :src="todoIcon"
+            alt="todo icon"
+            @click="userListener(user.id, ModalTypes.ToDoList)"
+          />
+          <img
+            :src="userIcon"
+            alt="user icon"
+            @click="userListener(user.id, ModalTypes.UserSettings)"
+          />
         </div>
       </div>
     </div>
@@ -44,7 +52,7 @@ const userListener = (id) => {
 
   .users-list {
     padding: 0 35px;
-    height: 75vh;
+    height: 70vh;
     overflow-y: auto;
     scrollbar-track-color: white;
 

@@ -15,11 +15,17 @@
     <ModalTodoList
       v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
       :data="ModalStore.getModalSettings.modalProps.data"
+      :todo="
+        TodoStore.getTasksById(ModalStore.getModalSettings.modalProps.data.id)
+      "
       class="modal-content"
       @click.stop
     ></ModalTodoList>
     <ModalPaymentDetails
-      v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
+      v-if="
+        ModalStore.getModalSettings.modalProps.type ===
+        ModalTypes.PaymentDetails
+      "
       :data="ModalStore.getModalSettings.modalProps.data"
       class="modal-content"
       @click.stop
@@ -29,12 +35,14 @@
 
 <script setup>
 import useModalStore from "../../store/modules/ModalStore";
+import useTodoStore from "../../store/modules/TodoStore";
 import ModalTypes from "../../utils/ModalTypes";
 import ModalPaymentDetails from "./Modals/ModalPaymentDetails.vue";
 import ModalUserSettings from "./Modals/ModalUserSettings.vue";
 import ModalTodoList from "./Modals/ModalTodoList.vue";
 
 const ModalStore = useModalStore();
+const TodoStore = useTodoStore();
 </script>
 
 <style lang="scss">
@@ -61,47 +69,6 @@ const ModalStore = useModalStore();
     border-radius: 12px;
 
     padding: 30px 103px;
-
-    #user_settings_modal {
-      h3 {
-        font-size: 24px;
-        font-weight: 700;
-        color: #949494;
-        text-align: center;
-        margin-bottom: 50px;
-      }
-
-      div {
-        width: 480px;
-        margin-bottom: 14px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        p {
-          font-size: 18px;
-        }
-
-        input {
-          @include input-main;
-          width: 70%;
-        }
-      }
-
-      .buttons-container {
-        padding-top: 40px;
-        justify-content: space-around;
-
-        button {
-          @include button-main;
-        }
-
-        button:hover {
-          color: black;
-          background-color: yellow;
-        }
-      }
-    }
   }
 }
 </style>
