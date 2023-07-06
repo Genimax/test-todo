@@ -15,9 +15,6 @@
     <ModalTodoList
       v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
       :data="ModalStore.getModalSettings.modalProps.data"
-      :todo="
-        TodoStore.getTasksById(ModalStore.getModalSettings.modalProps.data.id)
-      "
       class="modal-content"
       @click.stop
     ></ModalTodoList>
@@ -67,8 +64,8 @@ const TodoStore = useTodoStore();
     margin: auto;
     background: $grey;
     border-radius: 12px;
-
     padding: 30px 103px;
+    outline: none;
   }
 }
 </style>

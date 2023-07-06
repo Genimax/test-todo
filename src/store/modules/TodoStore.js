@@ -3,16 +3,14 @@ import generateTodoLists from "../../utils/todoGenerator";
 
 const useTodoStore = defineStore("todoStore", {
   state: () => {
-    return {
-      lists: generateTodoLists(100)
-    };
+    return generateTodoLists(100);
 
     // {id: [{task, done}]}
   },
 
   getters: {
     getTasksById() {
-      const { lists } = this;
+      const lists = this;
       return (id) => {
         return lists[id];
       };

@@ -5,20 +5,27 @@
       <h4>{{ fullName }}:</h4>
 
       <div class="tasks-container">
-        <p v-if="props.todo.length === 0" class="no-tasks">НЕТ ЗАДАЧ</p>
-        <div v-for="(task, i) in tasks" :key="task.id" class="task-container">
+        <p v-if="tasksStore.length === 0" class="no-tasks">НЕТ ЗАДАЧ</p>
+        <div
+          v-for="(task, i) in tasksStore"
+          :key="task.id"
+          class="task-container"
+        >
           <p>{{ i + 1 }}.</p>
-          <input v-model="tasks[i].task" @input="onChange(tasks[i].task)" />
+          <input
+            v-model.trim="tasks[i].task"
+            @input="onChange(tasks[i].task)"
+          />
           <img
             class="status-icon"
-            :src="task.done ? doneIcon : statusIcon"
+            :src="tasks[i].done ? doneIcon : statusIcon"
             alt="status"
-            @click="onStatusClick(task)"
+            @click="onStatusClick(tasks[i])"
           />
         </div>
       </div>
       <div class="buttons-container">
-        <button class="btn-ok" :disabled="btnDisabled" @click="onAccept(data)">
+        <button class="btn-ok" :disabled="btnDisabled" @click="onAccept">
           Подтвердить
         </button>
         <button @click="ModalStore.setVisible(false)">Отмена</button>
@@ -28,18 +35,15 @@
 </template>
 
 <script setup>
-import { reactive, ref, readonly } from "vue";
+import { ref } from "vue";
 import statusIcon from "../../../../public/status-icon.svg";
 import doneIcon from "../../../../public/done-icon.svg";
 import useModalStore from "../../../store/modules/ModalStore";
 import useTodoStore from "../../../store/modules/TodoStore";
 
 const props = defineProps({
-  data: Object,
-  todo: Array
+  data: Object
 });
-
-//  props.data.fullName
 
 const btnDisabled = ref(true);
 const setButton = (boolean) => {
@@ -49,11 +53,12 @@ const setButton = (boolean) => {
 const ModalStore = useModalStore();
 const TodoStore = useTodoStore();
 
+const tasksStore = TodoStore.getTasksById(props.data.id);
 const fullName = ref(props.data.fullName);
-const tasks = ref(props.todo);
+const tasks = ref(JSON.parse(JSON.stringify(tasksStore)));
 
-const onAccept = (data) => {
-  TodoStore.changeTasksById(data.id, tasks);
+const onAccept = () => {
+  TodoStore.changeTasksById(props.data.id, tasks);
   ModalStore.setVisible(false);
 };
 
