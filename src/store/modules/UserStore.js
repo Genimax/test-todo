@@ -9,12 +9,19 @@ const useUserStore = defineStore("userStore", {
   getters: {
     getUsers() {
       return this.users;
+    },
+
+    getUserById() {
+      const { users } = this;
+      return (id) => {
+        return users.find((user) => user.id === id);
+      };
     }
   },
 
   actions: {
     changeUserById(id, data) {
-      const user = this.users.find((item) => item.id === id);
+      const user = this.users.find((user) => user.id === id);
 
       console.log(data);
 

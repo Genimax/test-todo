@@ -17,8 +17,8 @@ const userListener = (id, modalType) => {
 </script>
 
 <template>
-  <div class="users-container">
-    <div class="users-list">
+  <div class="main-container">
+    <div class="main-list">
       <div v-for="user in userStore.getUsers" :key="user.id">
         <p>{{ user.fullName }}</p>
         <div>
@@ -38,10 +38,10 @@ const userListener = (id, modalType) => {
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../styles/variables";
 
-.users-container {
+.main-container {
   display: flex;
   flex-direction: column;
   padding: 50px 25px;
@@ -50,7 +50,7 @@ const userListener = (id, modalType) => {
   align-self: center;
   background-color: $grey;
 
-  .users-list {
+  .main-list {
     padding: 0 35px;
     height: 70vh;
     overflow-y: auto;
@@ -101,18 +101,18 @@ const userListener = (id, modalType) => {
   }
 }
 
-.users-list::-webkit-scrollbar {
+.main-list::-webkit-scrollbar {
   width: 8px;
   border-radius: 10px;
   background-color: $dark-grey;
 }
 
-.users-list::-webkit-scrollbar-track {
+.main-list::-webkit-scrollbar-track {
   border-radius: 10px;
   background: $dark-grey;
 }
 
-.users-list::-webkit-scrollbar-thumb {
+.main-list::-webkit-scrollbar-thumb {
   background: $light-grey;
   border-radius: 10px;
 }
