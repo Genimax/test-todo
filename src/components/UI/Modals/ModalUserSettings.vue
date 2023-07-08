@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="user-settings-modal">
-      <h3>Задачи пользователя:</h3>
+      <h3>Настройки пользователя:</h3>
 
       <div>
         <p>Email:</p>
@@ -108,6 +108,32 @@ const onChange = (field) => {
     button:disabled {
       @include button-main;
       opacity: 0.3;
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .user-settings-modal {
+    h3 {
+      font-size: 18px;
+    }
+
+    div {
+      width: 300px;
+      flex-direction: column;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+    .buttons-container {
+      padding-top: 30px;
+      justify-content: space-around;
+      gap: 10px;
+
+      button {
+        @include button-main;
+      }
     }
   }
 }

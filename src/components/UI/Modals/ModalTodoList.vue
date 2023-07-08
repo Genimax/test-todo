@@ -149,4 +149,35 @@ input {
   font-weight: 700;
   opacity: 0.3;
 }
+
+@media (max-width: 770px) {
+  .todo-list-modal {
+    h3,
+    h4 {
+      font-size: 18px;
+    }
+
+    div {
+      width: 300px;
+      flex-direction: column;
+
+      div {
+        flex-direction: row;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      input {
+        font-size: 16px;
+        width: fit-content;
+      }
+    }
+    .buttons-container {
+      justify-content: space-around;
+      gap: 10px;
+    }
+  }
+}
 </style>

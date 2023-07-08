@@ -116,4 +116,60 @@ const userListener = (id, modalType) => {
   background: $light-grey;
   border-radius: 10px;
 }
+
+@media (max-width: 1280px) {
+  .main-container {
+    width: 490px;
+
+    .main-list {
+      height: 60vh;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  .main-container {
+    width: 300px;
+
+    .main-list {
+      padding: 0 5px;
+      div {
+        padding: 0;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        justify-content: center;
+        font-size: 20px;
+        p {
+          cursor: initial;
+          padding: 5px 0 0;
+          height: 40px;
+          max-width: 100%;
+          word-wrap: normal;
+          word-break: normal;
+          overflow: auto;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      div:hover {
+        div {
+          display: flex;
+          position: relative;
+          right: 0;
+        }
+      }
+    }
+  }
+}
 </style>

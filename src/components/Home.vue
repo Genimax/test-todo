@@ -31,7 +31,7 @@ header {
   display: flex;
   height: $header-height;
   gap: 70px;
-  margin-bottom: 170px - $header-height;
+  margin-bottom: 5vh;
 
   .nav-button {
     display: flex;
@@ -57,6 +57,36 @@ header {
 
   .router-link-exact-active {
     color: $yellow;
+  }
+}
+
+@media (max-width: 1280px) {
+}
+
+@media (max-width: 770px) {
+  header {
+    gap: 20px;
+
+    .nav-button {
+      width: 250px;
+    }
+  }
+}
+
+@media (max-width: 610px) {
+  header {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 10vh;
+
+    .nav-button {
+      width: 100vw;
+      border-radius: 0;
+    }
+
+    .nav-button:hover {
+      height: 60px;
+    }
   }
 }
 </style>

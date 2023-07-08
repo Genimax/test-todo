@@ -5,27 +5,27 @@
       <h4>№{{ payment.number }}:</h4>
       <div class="data-container">
         <div>
-          <p>ID Платежа:</p>
+          <p class="p-title">ID Платежа:</p>
           <p>P-{{ payment.paymentId }}</p>
         </div>
         <div>
-          <p>Дата:</p>
+          <p class="p-title">Дата:</p>
           <p>{{ payment.date }}</p>
         </div>
         <div>
-          <p>Время:</p>
+          <p class="p-title">Время:</p>
           <p>{{ payment.time }}</p>
         </div>
         <div>
-          <p>Сумма:</p>
+          <p class="p-title">Сумма:</p>
           <p>$ {{ payment.sum }}</p>
         </div>
         <div>
-          <p>Отправитель:</p>
+          <p class="p-title">Отправитель:</p>
           <p>{{ user.fullName }}</p>
         </div>
         <div>
-          <p>Статус:</p>
+          <p class="p-title">Статус:</p>
           <p>{{ payment.status }}</p>
         </div>
       </div>
@@ -63,6 +63,10 @@ h4 {
   color: #949494;
 }
 
+.p-title {
+  color: grey;
+}
+
 h4 {
   padding-top: 10px;
   color: white;
@@ -97,5 +101,21 @@ button {
 button:hover {
   background-color: yellow;
   color: black;
+}
+
+@media (max-width: 770px) {
+  .user-settings-modal {
+    h3,
+    h4 {
+      font-size: 18px;
+    }
+  }
+  .data-container {
+    min-width: 300px;
+
+    div {
+      flex-direction: column;
+    }
+  }
 }
 </style>

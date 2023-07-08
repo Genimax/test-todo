@@ -68,4 +68,12 @@ const TodoStore = useTodoStore();
     outline: none;
   }
 }
+
+@media (max-width: 770px) {
+  .modal-window {
+    .modal-content {
+      padding: 20px;
+    }
+  }
+}
 </style>
