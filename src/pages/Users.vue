@@ -1,7 +1,7 @@
 <script setup>
-import useUserStore from "../store/modules/UserStore.js";
-import useModalStore from "../store/modules/ModalStore.js";
-import ModalTypes from "../utils/ModalTypes.js";
+import useUserStore from "../store/modules/UserStore";
+import useModalStore from "../store/modules/ModalStore";
+import ModalTypes from "../utils/ModalTypes";
 
 import todoIcon from "../../public/todo-list-icon.svg";
 import userIcon from "../../public/user-settings.svg";
@@ -38,8 +38,8 @@ const userListener = (id, modalType) => {
   </div>
 </template>
 
-<style lang="scss">
-@import "../styles/variables";
+<style lang="scss" scoped>
+@import "src/styles/variables";
 
 .main-container {
   display: flex;

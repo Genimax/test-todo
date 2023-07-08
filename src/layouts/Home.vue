@@ -1,11 +1,5 @@
-<script>
-import Modal from "./UI/Modal.vue";
-
-export default {
-  components: {
-    Modal
-  }
-};
+<script setup>
+import Modal from "../components/UI/Modal.vue";
 </script>
 
 <template>
@@ -22,7 +16,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-@import "/src/styles/variables.scss";
+@import "../styles/variables";
 
 $header-height: 90px;
 

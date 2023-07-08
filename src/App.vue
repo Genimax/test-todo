@@ -1,9 +1,5 @@
-<script>
-import HomePage from "./components/Home.vue";
-
-export default {
-  components: { HomePage }
-};
+<script setup>
+import HomePage from "./layouts/Home.vue";
 </script>
 
 <template>

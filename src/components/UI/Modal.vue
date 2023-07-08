@@ -4,42 +4,31 @@
     class="modal-window"
     @click.stop="ModalStore.setVisible(false)"
   >
-    <ModalUserSettings
-      v-if="
-        ModalStore.getModalSettings.modalProps.type === ModalTypes.UserSettings
-      "
-      :data="ModalStore.getModalSettings.modalProps.data"
+    <component
+      :is="selectModal()"
+      :data="ModalStore.modalProps.data"
       class="modal-content"
       @click.stop
-    ></ModalUserSettings>
-    <ModalTodoList
-      v-if="ModalStore.getModalSettings.modalProps.type === ModalTypes.ToDoList"
-      :data="ModalStore.getModalSettings.modalProps.data"
-      class="modal-content"
-      @click.stop
-    ></ModalTodoList>
-    <ModalPaymentDetails
-      v-if="
-        ModalStore.getModalSettings.modalProps.type ===
-        ModalTypes.PaymentDetails
-      "
-      :data="ModalStore.getModalSettings.modalProps.data"
-      class="modal-content"
-      @click.stop
-    ></ModalPaymentDetails>
+    ></component>
   </div>
 </template>
 
 <script setup>
 import useModalStore from "../../store/modules/ModalStore";
-import useTodoStore from "../../store/modules/TodoStore";
-import ModalTypes from "../../utils/ModalTypes";
 import ModalPaymentDetails from "./Modals/ModalPaymentDetails.vue";
 import ModalUserSettings from "./Modals/ModalUserSettings.vue";
 import ModalTodoList from "./Modals/ModalTodoList.vue";
 
 const ModalStore = useModalStore();
-const TodoStore = useTodoStore();
+
+const selectModal = () => {
+  const components = {
+    ModalPaymentDetails,
+    ModalUserSettings,
+    ModalTodoList
+  };
+  return components[ModalStore.modalProps.type];
+};
 </script>
 
 <style lang="scss">
